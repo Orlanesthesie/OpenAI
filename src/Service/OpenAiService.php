@@ -8,7 +8,7 @@ class OpenAiService
 {
     public static function chat(string $messages)
     {
-        $client = OpenAI::client('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');
+        $client = OpenAI::client('');
         $result = $client->chat()->create([
             'model' => 'gpt-3.5-turbo',
             'messages' => [
