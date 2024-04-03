@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ChatController!{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+
+<div class="example-wrapper">
+    <h1 class="text-white">Hello {{ controller_name }}! ✅</h1>
+        <div class="container">
+           {% for message in messages %}
+        {% if message.role == 'user' %}
+         <div class="border border-light"> 
+                {{ message.content }}
+         </div>
+         {% else %}
+         <div class="border border-danger" style="margin: 50px"> 
+                {{ message.content }}
+         </div>
+         {% endif %}
+           {% endfor %}
+         
+
+        <form action="{{ path('app_chat')}}" method="post" class="form-example">
+            <div class="form-example">
+            <input type="textarea" class="p-2 border rounded-4 dark-grey" placeholder="Message Chat GPT" name="messages">
+                <button class="btn" type="submit"> <i class="fa-solid fa-circle-arrow-up" style="color: #383838;"></i></button> 
+            </div>
+        </form>
+        </div>
+</div>
+{% endblock %}
